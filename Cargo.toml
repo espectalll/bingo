@@ -1,0 +1,8 @@
+[package]
+name = "bingo"
+version = "0.1.0"
+authors = ["Francisco Gómez <espectalll@kydara.com>"]
+
+[dependencies]
+rand = "0.3.14"
+libc = "0.2.10"

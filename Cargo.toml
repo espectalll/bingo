@@ -1,8 +1,9 @@
 [package]
 name = "bingo"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Francisco Gómez <espectalll@kydara.com>"]
 
 [dependencies]
 rand = "0.3.14"
 libc = "0.2.10"
+gtk = { version = "0.0.7", features = ["v3_10"] }

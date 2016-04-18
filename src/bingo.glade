@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.0 -->
+<!-- Generated with glade 3.20.0 
+
+Copyright (C) 2016 espectalll
+
+This file is part of Bingo.
+
+Bingo is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Bingo is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Bingo.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
 <interface>
   <requires lib="gtk+" version="3.20"/>
+  <!-- interface-license-type gplv3 -->
+  <!-- interface-name Bingo -->
+  <!-- interface-copyright 2016 espectalll -->
+  <object class="GtkListStore" id="UsedListStore">
+    <columns>
+      <!-- column-name number -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
   <object class="GtkApplicationWindow" id="AppWindow">
     <property name="width_request">600</property>
     <property name="height_request">400</property>
@@ -105,16 +133,18 @@
     <property name="can_focus">False</property>
     <property name="relative_to">bingoButton</property>
     <property name="position">bottom</property>
+    <property name="constrain_to">none</property>
     <child>
       <object class="GtkBox">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="vexpand">True</property>
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkEntry" id="SearchEntry">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="margin_bottom">6</property>
+            <property name="margin_bottom">2</property>
             <property name="input_purpose">number</property>
             <style>
               <class name="search"/>
@@ -127,9 +157,24 @@
           </packing>
         </child>
         <child>
-          <object class="GtkListBox" id="UsedListBox">
+          <object class="GtkScrolledWindow">
+            <property name="height_request">220</property>
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can_focus">True</property>
+            <property name="shadow_type">in</property>
+            <child>
+              <object class="GtkTreeView" id="UsedListView">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="model">UsedListStore</property>
+                <property name="headers_visible">False</property>
+                <property name="search_column">0</property>
+                <property name="show_expanders">False</property>
+                <child internal-child="selection">
+                  <object class="GtkTreeSelection"/>
+                </child>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
